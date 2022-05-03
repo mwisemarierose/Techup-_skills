@@ -1,4 +1,4 @@
-const item = [
+const product = [
     { name: "Bike", price: 100 },
     { name: "TV", price: 200 },
     { name: "Album", price: 10 },
@@ -6,62 +6,31 @@ const item = [
     { name: "Phone", price: 500 },
     { name: "Computer", price: 1000 },
   ];
-  let total = 0;
-  
-  item.forEach((item) => {
-    // Displaying all items
-    
-    const list = document.querySelector(".products ul");
-    const prod = document.createElement("li");
-    prod.textContent = item.name + "  " + item.price + "$";
-    list.appendChild(prod);
-    total = total + item.price;
-    return total;
-  });
-  
+ 
   // The Cheap item
 
+  const min=Math.min(...product.map(product => product.price))
+const cheapest= product.filter(product.price===min)
+console.log(`the cheapest product is ${cheapest[0].name} with price of ${cheapest[0].price} `)
 
-  const cheap = item.reduce((prev, curr) => {
-    return prev.price < curr.price ? prev : curr;
-  });
-  const smallProd = document.querySelector(".cheap");
-  const smallText = document.createElement("p");
-  const contentSmall = "the item with the small price is :";
-  smallText.textContent = contentSmall + " " + cheap.name + " " + cheap.price;
-  smallProd.appendChild(smallText);
-console.log("The cheapest product is "+min)
 
 //   The expensive item
 
-  const expensive = item.reduce((prev, curr) => {
-    return curr.price > prev.price ? curr : prev;
-  });
-  const largeProd = document.querySelector(".expensive");
-  const text = document.createElement("p");
-  const contentLarge = "The item with expensive price is :";
-  text.textContent = contentLarge + " " + expensive.name + " " + expensive.price;
-  largeProd.appendChild(text);
+const max=Math.max(...product.map(product => product.price))
+const expensive= product.filter(product.price===max)
+console.log(`the expesnive product is ${expensive[0].name} with price of ${expensive[0].price} `)
+
   
   // total price of all items combined
 
-  const combined = document.querySelector(".total");
-  const combText = document.createElement("p");
-  combText.textContent =
-    "The Total price of all items combined together is : " + total;
-  combined.appendChild(combText);
-  
+  let total=0;
+  for(let i=0; i<item.length;  i++) {
+   total=total+item[i].price;
+  }
+  console.log(`total price of products is ${total}`)
+
   // total price combined excluding price < 10
 
-  let maxCombined = 0;
-  const totalRemoved = item.filter((item) => item.price >= 10);
-  totalRemoved.forEach((item) => {
-    maxCombined = maxCombined + item.price;
-    return maxCombined;
-  });
-  const lastTotal = document.querySelector(".lastTotal");
-  const lastText = document.createElement("p");
-  lastText.textContent =
-    "The total price of all items excluding those of price < 10 is: " +
-    maxCombined;
-  lastTotal.appendChild(lastText);
+ const UnderTenProduct= item.filter((product) =>{
+   return product.price<10
+ })
