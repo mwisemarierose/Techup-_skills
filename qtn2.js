@@ -1,4 +1,4 @@
-const product = [
+const item = [
     { name: "Bike", price: 100 },
     { name: "TV", price: 200 },
     { name: "Album", price: 10 },
@@ -9,15 +9,15 @@ const product = [
  
   // The Cheap item
 
-  const min=Math.min(...product.map(product => product.price))
-const cheapest= product.filter(product.price===min)
+  const min=Math.min(...item.map(product => product.price))
+const cheapest= item.filter(product.price===min)
 console.log(`the cheapest product is ${cheapest[0].name} with price of ${cheapest[0].price} `)
 
 
 //   The expensive item
 
-const max=Math.max(...product.map(product => product.price))
-const expensive= product.filter(product.price===max)
+const max=Math.max(...item.map(product => product.price))
+const expensive= item.filter(product.price===max)
 console.log(`the expesnive product is ${expensive[0].name} with price of ${expensive[0].price} `)
 
   
